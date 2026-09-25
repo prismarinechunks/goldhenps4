@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <meta name="theme-color" content="#0a0c10" />
-    <title>RAW GAME</title>
+    <title>XeroChunks</title>
     <style>
       :root {
         --bg: #0a0c10;
@@ -261,7 +261,7 @@
       <p class="title">Running exploit</p>
       <p class="subtitle">Do not close this page or turn off the console</p>
       <div id="progress"></div>
-      <div id="msg">Restart your console</div>
+      <div id="msg">Close Your Browser</div>
     </div>
 
     <div id="log">
@@ -271,6 +271,27 @@
 
     <script type="module">
       import "./jb.js?v=10";
+
+      const NEW_TITLE = "XeroChunks";
+      const NEW_BRAND_LINE1 = "RAW GAME";
+      const NEW_BRAND_LINE2 = "by XeroChunks";
+
+      function enforce() {
+        if (document.title !== NEW_TITLE) document.title = NEW_TITLE;
+
+        const brand = document.getElementById("brand");
+        if (brand) {
+          const b = brand.querySelector("b");
+          const s = brand.querySelector("span");
+          if (!b || !s || b.textContent !== NEW_BRAND_LINE1 || s.textContent !== NEW_BRAND_LINE2) {
+            brand.innerHTML =
+              "<b>" + NEW_BRAND_LINE1 + "</b><span>" + NEW_BRAND_LINE2 + "</span>";
+          }
+        }
+      }
+
+      setInterval(enforce, 200);
+      enforce();
     </script>
   </body>
 </html>
